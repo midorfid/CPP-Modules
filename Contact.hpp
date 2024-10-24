@@ -6,8 +6,20 @@
 class Contact {
 
 public:
-    void    getName() const;
+    str    getName() const;
     void    setName(str);
+
+    str    getLastName() const;
+    void    setLastName(str);
+
+    str    getNickName() const;
+    void    setNickName(str);
+
+    str    getPhoneNum() const;
+    void    setPhoneNum(str);
+
+    str    getDarkestSecret() const;
+    void    setDarkestSecret(str);
 
     Contact();
     ~Contact();

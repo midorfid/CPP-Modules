@@ -8,6 +8,6 @@ void Contact::setName(str name) {
     this->Name = name;
 }
 
-void Contact::getName() const {
-    std::cout << this->Name << std::endl;
+str Contact::getName() const {
+    return this->Name;
 }
