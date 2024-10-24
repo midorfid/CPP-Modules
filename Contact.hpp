@@ -25,10 +25,10 @@ public:
     ~Contact();
 private:
     str     Name;
-    // str     LastName;
-    // str     NickName;
-    // str     PhoneNum;
-    // str     DarkestSecret;
+    str     LastName;
+    str     NickName;
+    str     PhoneNum;
+    str     DarkestSecret;
 };
 
 #endif

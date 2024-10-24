@@ -39,7 +39,7 @@ void PhoneBook::search() {
     std::cout << std::setw(10) << "1" << "|";
     std::cout << std::setw(10) << this->contacts[0].getName() << "|";
     std::cout << std::setw(10) << this->contacts[0].getLastName() << "|";
-    std::cout << std::setw(10) << this->contacts[0].getNickName() << "|";
+    std::cout << std::setw(10) << this->contacts[0].getNickName() << "|" << std::endl;
     std::cout << "Enter an index:" << std::endl;
     std::cin >> res;
     this->contacts[res[0] - 49].getName();
