@@ -1,19 +1,19 @@
-#include "Phonebook.hpp"
-#include <string.h>
+#include "./lib.hpp"
 
 int main() {
-    PhoneBook PhoneBook;
+    PhoneBook Phonebook;
     str input;
 
     while (1)
     {
+        std::cout << "EXIT, ADD, SEARCH:" << std::endl;
         std::cin >> input;
         if(input.compare("EXIT") == 0)
-            exit(EXIT_SUCCESS);
+            break ;
         if(input.compare("ADD") == 0)
-            PhoneBook.add();
-        // else if(input.compare("SEARCH") == 0)
-        //     PhoneBook.search();
+            Phonebook.add();
+        else if(input.compare("SEARCH") == 0)
+            Phonebook.search();
     }
-    return(0)   
+    return(0);
 }

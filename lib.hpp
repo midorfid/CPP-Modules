@@ -5,6 +5,9 @@
 #include <iostream>
 #include <istream>
 #include <iomanip>
+
+typedef std::string str;
+
 #include "./Contact.hpp"
 #include "./Phonebook.hpp"
 

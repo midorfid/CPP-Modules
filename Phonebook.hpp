@@ -10,6 +10,8 @@ public:
     void    add();
     void    search();
 
+    PhoneBook();
+    ~PhoneBook();    
 private:
     const int   max_contacts;
     int         index;

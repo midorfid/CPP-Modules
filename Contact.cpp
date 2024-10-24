@@ -4,6 +4,10 @@ Contact::Contact() {}
 
 Contact::~Contact() {}
 
-Contact::setName(str name) {
+void Contact::setName(str name) {
     this->Name = name;
+}
+
+void Contact::getName() const {
+    std::cout << this->Name << std::endl;
 }

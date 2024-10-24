@@ -6,9 +6,11 @@
 class Contact {
 
 public:
-    // void    getName();
-    void    setName();
+    void    getName() const;
+    void    setName(str);
 
+    Contact();
+    ~Contact();
 private:
     str     Name;
     // str     LastName;
