@@ -2,7 +2,7 @@ NAME = stream_editor
 
 SRC = main.cpp sed.cpp
 
-CC = -c++ -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g
+CC = -c++ -Wall -Wextra -Werror -std=c++98 -g
 
 all: $(NAME)
 
