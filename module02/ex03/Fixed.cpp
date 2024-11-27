@@ -1,22 +1,22 @@
 #include "Fixed.hpp"
 
 Fixed::Fixed() : value(0) {
-    std::cout << "Default constructor called" << std::endl;
+    // std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const int value) : value(convertToRaw(value)) {
-    std::cout << "INT constructor called" << std::endl;
+    // std::cout << "INT constructor called" << std::endl;
 }
 
 Fixed::Fixed(const float value) : value(convertToRaw(value)) {
-    std::cout << "FLOAT constructor called" << std::endl;
+    // std::cout << "FLOAT constructor called" << std::endl;
 }
 Fixed::~Fixed() {
-    std::cout << "Destructor called" << std::endl;
+    // std::cout << "Destructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed& other) {
-    std::cout << "Copy constructor called" << std::endl;
+    // std::cout << "Copy constructor called" << std::endl;
     *this = other;
 }
 
@@ -50,7 +50,7 @@ std::ostream &operator<<(std::ostream &os, const Fixed &cl) {
 }
 
     Fixed &Fixed::operator=(const Fixed &other) {
-        std::cout << "Copy assignment operator called" << std::endl;
+        // std::cout << "Copy assignment operator called" << std::endl;
         this->value = other.getRawBits();
         return(*this);
     }

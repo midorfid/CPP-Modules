@@ -1,6 +1,6 @@
 NAME = a.out
 
-SRC = main.cpp Fixed.cpp Point.cpp bsp.cpp
+SRC = main.cpp Fixed.cpp Point.cpp
 
 CC = -c++ -Wall -Wextra -Werror -std=c++98
 

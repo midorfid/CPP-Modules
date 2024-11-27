@@ -47,7 +47,7 @@ public:
 
     int     getRawBits(void) const;
 
-    void    setRawBits(int const raw);
+    void    setRawBits(const int raw);
 
     int     convertToRaw(float const input);
 
