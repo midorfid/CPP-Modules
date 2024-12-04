@@ -11,7 +11,6 @@ class Animal {
         Animal(const std::string);
 
     public:
-        Animal();
         virtual ~Animal();
         
         Animal(const Animal &);
