@@ -2,11 +2,11 @@
 #include "AMateria.hpp"
 #include "ICharacter.hpp"
 
-Ice::Ice() : type("ice") { std::cout << "Ice constructor called" << std::endl; }
+Ice::Ice() : AMateria("ice") { std::cout << "Ice constructor called" << std::endl; }
 
 Ice::~Ice() { std::cout << "Ice destructor called" << std::endl; }
 
-Ice::Ice(const Ice &other) {
+Ice::Ice(const Ice &other) : AMateria(other) {
     std::cout << "Ice copy constructor called" << std::endl;
     *this = other;
 }

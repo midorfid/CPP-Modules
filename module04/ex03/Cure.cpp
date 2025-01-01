@@ -2,11 +2,11 @@
 #include "AMateria.hpp"
 #include "ICharacter.hpp"
 
-Cure::Cure() : type("Cure") { std::cout << "Cure constructor called" << std::endl; }
+Cure::Cure() : AMateria("cure") { std::cout << "Cure constructor called" << std::endl; }
 
 Cure::~Cure() { std::cout << "Cure destructor called" << std::endl; }
 
-Cure::Cure(const Cure &other) {
+Cure::Cure(const Cure &other) : AMateria(other) {
     std::cout << "Cure copy constructor called" << std::endl;
     *this = other;
 }

@@ -1,19 +1,25 @@
 NAME = materia
 
-HEADERS = *.hpp
+HEADERS = $(wildcard *.hpp)
+SRC = $(wildcard *.cpp)
+OBJ = $(SRC:.cpp=.o)
 
-SRC = main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp
-
-CC = -c++ -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
-$(NAME): $(SRC) $(HEADERS)
-	$(CC) $(SRC) -o $(NAME)
+%.o : %.cpp $(HEADERS)
+	$(CXX) $(FLAGS) $< -c -o $@
+
+$(NAME): $(OBJ)
+	$(CXX) $(FLAGS) $(OBJ) -o $(NAME)
 
 clean:
-	rm -rf $(NAME)
+	$(RM) $(OBJ)
 
 fclean: clean
+	$(RM) $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re
