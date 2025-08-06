@@ -14,10 +14,6 @@ Form::Form(const std::string &name, const int &minSignGrade, const int &minExecG
 		throw GradeTooLowException();
 }
 
-Form::~Form() { 
-	std::cout << "~Form destructor " << this->getName() << std::endl;
-}
-
 Form::Form(const Form &other) : _name(other._name), _isSigned(other._isSigned), 
 		_minSignGrade(other._minSignGrade), _minExecGrade(other._minExecGrade)
 {
@@ -62,7 +58,7 @@ const char *FormNotSignedException::what() const throw() {
 }
 
 void	Form::execute(const Bureaucrat &executor) const {
-	if (this->getSigned == false)
+	if (this->getSigned() == false)
 		throw FormNotSignedException();
 	if (executor.getGrade() > this->getMinExecGrade())
 		throw GradeTooLowException();

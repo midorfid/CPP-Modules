@@ -1,19 +1,20 @@
 #include "Bureaucrat.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int main() {
-	int	expected_grade = 102;
-	int	qualified_grade = 101;
-	std::string form_name = "request";
+	int	qualified_grade = 1;
 	std::string bureaucrat_name = "Anton";
 
 	try {
-		Bureaucrat	b(bureaucrat_name, qualified_grade);
-		Form		f(form_name, expected_grade, expected_grade);
+		Bureaucrat			b(bureaucrat_name, qualified_grade);
+		ShrubberyCreation		pres;
+		Form				&f = static_cast<Form&>(pres);
+		ShrubberyCreation		&pres2 = dynamic_cast<ShrubberyCreation&>(f);
 
-
-		// f.beSigned(b);
-		b.signForm(f);
-
+		pres2.beSigned(b);
+		pres2.execute(b);
 	} catch (std::exception & e) {
 		std::cout << e.what() << std::endl;
 	}

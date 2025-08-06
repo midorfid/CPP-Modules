@@ -1,4 +1,4 @@
-NAME = Bureaucrat_Form
+NAME = Bureaucrat_Advanced_Form
 
 HEADERS = $(wildcard *.hpp)
 SRC = $(wildcard *.cpp)
@@ -16,6 +16,7 @@ $(NAME): $(OBJ)
 
 clean:
 	$(RM) $(OBJ)
+	$(RM) *_shrubbery
 
 fclean: clean
 	$(RM) $(NAME)

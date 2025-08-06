@@ -14,7 +14,7 @@ class PresidentPardon : public Form {
 
 		PresidentPardon(const PresidentPardon &other);
 
-		PresidentPardon	&PresidentPardon::operator=(const PresidentPardon &other);
+		PresidentPardon	&operator=(const PresidentPardon &other);
 
 		void	executer() const;
 };
