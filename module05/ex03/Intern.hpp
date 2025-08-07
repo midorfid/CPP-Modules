@@ -17,6 +17,7 @@ class Intern {
 
 		static Form *makeForm(const std::string &form_name, const std::string &target);
 
+	private:
 		static Form *makePresidentalPardonForm(const std::string &target);
 		
 		static Form *makeRobotomyRequestForm(const std::string &target);

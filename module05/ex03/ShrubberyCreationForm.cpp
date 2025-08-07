@@ -1,6 +1,6 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreation::ShrubberyCreation() : Form("Shrubbery Creation", 72, 45), target_("unknown") { std::cout << "ShrubberyCreation constructor" << std::endl; }
+ShrubberyCreation::ShrubberyCreation() : Form("ShrubberyCreationForm", 72, 45), target_("unknown") { std::cout << "ShrubberyCreation constructor" << std::endl; }
 
 ShrubberyCreation::~ShrubberyCreation() { std::cout << "ShrubberyCreation destructor" << std::endl; }
 
