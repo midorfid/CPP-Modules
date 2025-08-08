@@ -13,53 +13,98 @@ ConvertStr &ConvertStr::operator=(const ConvertStr &other) {
 	return *this;
 }
 
-DataType	&ConvertStr::ClassifyString(const std::string &str) {
+DataType	ConvertStr::ClassifyString(const std::string &str) {
 	if (IsFloat(str))
-		return DataType::Float;
+		return Float;
 	if (IsDouble(str))
-		return DataType::Double;
+		return Double;
 	if (IsChar(str))
-		return DataType::Char;
+		return Char;
 	if (IsInt(str))
-		return DataType::Int;
+		return Int;
 
-	return DataType::Unknown;
+	return Unknown;
 }
 
 void		ConvertStr::ConvertThenPrint(const std::string &to_convert) {
 	DataType type = ClassifyString(to_convert);
 
 	switch(type) {
-		case DataType::Char:
+		case Char:
+			std::cout << "char";
 			break;
-		case DataType::Int:
+		case Float:
+			std::cout << "float";
 			break;
-		case DataType::Float:
+		case Double:
+			std::cout << "double";
 			break;
-		case DataType::Double:
+		case Int:
+			std::cout << "int";
 			break;
-		case DataType::Unknown:
+		case Unknown:
+			std::cout << "unknown";
 			break;
 	}
 }
 
-bool				IsChar(const std::string &to_convert) {
-	if (to_convert.length() > 1 && std::isdigit(to_convert[0]) == 0)
-		return false;
+bool				ConvertStr::IsChar(const std::string &to_convert) {
+	if (to_convert.length() == 1 && std::isdigit(to_convert[0]) != 0)
+		return true;
+	return false;
 }
 
-bool				IsInt(const char *to_convert);
-
-bool				IsFloat(const std::string &to_convert) {
-	const char *c_str = to_convert.c_str();
-	const size_t dot_idx = to_convert.find('.');
-	if (dot_idx == std::string::npos)
+bool				ConvertStr::IsInt(const std::string &to_convert) {
+	if (std::isdigit(to_convert[to_convert.length() - 1]) == 0)
 		return false;
-	
-	long double parsed = std::strtold(c_str);
+	return true;
 }
 
-bool				IsDouble(const char *to_convert);
+bool				ConvertStr::is_a_digit(const char &c) {
+	return std::isdigit(c);
+}
+
+bool				ConvertStr::IsFloat(const std::string &to_convert) {
+	if (to_convert.length() < 3)
+		return false;
+	if (to_convert == "nanf" || to_convert == "-inff" || to_convert == "+inff")
+		return true;
+	if (to_convert.find('.') == std::string::npos || to_convert[to_convert.length() - 1] != 'f')
+		return false;
+	std::string::const_iterator start = to_convert.begin() + std::string::npos + 1;
+	std::string::const_iterator end = to_convert.end() - 1;
+	switch (std::string::npos) {
+		case 0:
+			if (std::find_if(start, end, is_a_digit) == end)
+				return true;
+			break;
+		default:
+			if (std::find_if(start, end, is_a_digit) == end)
+				return true;
+			break;
+	}
+	return false;
+}
+
+bool				ConvertStr::IsDouble(const std::string &to_convert) {
+	if (to_convert == "nanf" || to_convert == "-inff" || to_convert == "+inff")
+		return true;
+	if (to_convert.find('.') == std::string::npos)
+		return false;
+	std::string::const_iterator start = to_convert.begin() + std::string::npos + 1;
+	std::string::const_iterator end = to_convert.end();
+	switch (std::string::npos) {
+		case 0:
+			if (std::find_if(start, end, is_a_digit) == end)
+				return true;
+			break;
+		default:
+			if (std::find_if(start, end, is_a_digit) == end)
+				return true;
+			break;
+	}
+	return false;
+}
 
 // char		ConvertStr::ConvertToChar(const char *to_convert) {
 
