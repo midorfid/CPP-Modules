@@ -4,6 +4,10 @@
 #include <math.h>
 #include <iostream>
 #include <algorithm>
+#include <iomanip>
+#include <ios>
+#include <stdlib.h>
+#include <limits.h>
 
 #define DIGITS "0123456789"
 
@@ -29,13 +33,13 @@ class ConvertStr {
 	private:
 		static DataType	ClassifyString(const std::string &to_convert);
 	
-		// static char				ConvertToChar(const char *to_convert);
+		static void				ConvertToChar(const std::string &to_convert);
 
-		// static int				ConvertToInt(const char *to_convert);
+		static void				ConvertToInt(const char *to_convert);
 
-		// static float			ConvertToFloat(const char *to_convert);
+		static void			ConvertToFloat(const char *to_convert);
 
-		// static double			ConvertToDouble(const char *to_convert);
+		static void			ConvertToDouble(const char *to_convert);
 
 
 		static bool				IsChar(const std::string &to_convert);
