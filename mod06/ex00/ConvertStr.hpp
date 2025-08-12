@@ -7,9 +7,19 @@
 #include <iomanip>
 #include <ios>
 #include <stdlib.h>
-#include <limits.h>
+#include <limits>
 
 #define DIGITS "0123456789"
+#define FLOAT_MAX 1 << 24
+#define FLOAT_MIN std::numeric_limits<float>::min()
+#define INT_MAX std::numeric_limits<int>::max()
+#define INT_MIN std::numeric_limits<int>::min()
+#define DOUBLE_MAX std::numeric_limits<double>::max()
+#define DOUBLE_MIN std::numeric_limits<double>::min()
+#define POS_INF_D std::numeric_limits<double>::infinity()
+#define NEG_INF_D -std::numeric_limits<double>::infinity()
+#define POS_INF_F std::numeric_limits<float>::infinity()
+#define NEG_INF_F -std::numeric_limits<float>::infinity()
 
 enum DataType {
 	Char,
@@ -33,14 +43,7 @@ class ConvertStr {
 	private:
 		static DataType	ClassifyString(const std::string &to_convert);
 	
-		static void				ConvertToChar(const std::string &to_convert);
-
-		static void				ConvertToInt(const char *to_convert);
-
-		static void			ConvertToFloat(const char *to_convert);
-
-		static void			ConvertToDouble(const char *to_convert);
-
+		static void				printConverted(const char *to_convert);
 
 		static bool				IsChar(const std::string &to_convert);
 
