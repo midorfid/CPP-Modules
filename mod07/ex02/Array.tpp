@@ -26,7 +26,7 @@ Array<T>::Array(const Array<T> &other) : _size(other._size), _arr(new T(other._s
 
 template<typename T>
 Array<T> &Array<T>::operator=(Array<T> other) {
-    std::swap(this, &other);
+    std::swap(*this, other);
     return *this;
 }
 

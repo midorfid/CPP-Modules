@@ -21,9 +21,12 @@ class Span {
 
         T   &operator[](unsigned int i);
 
-        Span(unsigned int &N);
+        Span(unsigned int N);
 
-        void            addNumber(const T &toAdd);
+        void            addNumber(T toAdd);
+
+        template <typename InputIterator>
+        void            addNumber(InputIterator first, InputIterator last);
 
         iterator        begin() const;
 
