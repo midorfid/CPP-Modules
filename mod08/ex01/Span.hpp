@@ -2,24 +2,37 @@
 
 template <typename T>
 class Span {
+    protected:
+        Span();
+
     private:
         unsigned int    _size;
+        unsigned int    _capacity;
         T               *_arr;
 
     public:
-        Span();
+        typedef T* iterator;
+
         ~Span();
 
         Span(const Span &other);
 
-        Span &operator=(const Span &other);
+        Span &operator=(Span other);
+
+        T   &operator[](unsigned int i);
 
         Span(unsigned int &N);
 
-        void addNumber();
+        void            addNumber(const T &toAdd);
 
-        const int &shortestSpan();
+        iterator        begin() const;
 
-        const int &longestSpan();
+        iterator        end() const;
+
+        int             shortestSpan() const;
+
+        int             longestSpan() const;
 
     };
+
+#include "Span.tpp"

@@ -1,4 +1,4 @@
-NAME = easyfind
+NAME = span
 
 HEADERS = $(wildcard *.hpp)
 SRC = $(wildcard *.cpp)

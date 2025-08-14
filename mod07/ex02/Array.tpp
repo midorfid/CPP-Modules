@@ -18,7 +18,10 @@ Array<T>::Array(unsigned int n) : _size(n) {
 }
 
 template<typename T>
-Array<T>::Array(const Array<T> &other) : _size(other._size), _arr(new T(*other._arr)) {
+Array<T>::Array(const Array<T> &other) : _size(other._size), _arr(new T(other._size)) {
+    for (int i = 0; i < _size; ++i) {
+        _arr[i] = other._arr[i];
+    }
 }
 
 template<typename T>
