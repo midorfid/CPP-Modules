@@ -5,9 +5,8 @@
 
 int main(int argc, char *argv[]) {
     if (argc < 3) {
-        std::cout << "minimum 2 numbers required to sort"
+        std::cout << "minimum 2 numbers required to sort";
     }
-    std::vector<int> v;
-
-
+	
+    PmergeMe    vecSort(argc - 1, ++argv);
 }
