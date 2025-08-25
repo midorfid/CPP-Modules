@@ -2,27 +2,38 @@
 
 #include <vector>
 #include <string>
+#include <iostream>
 
 #define SORTED 1
 #define UNSORTED 0
 
 class PmergeMe {
     private:
-        static int _compCount = 0;
-        PmergeMe();
 
-        template <typename T> static  bool    _comp(const T &a, const T &b) const {
+        template <typename T> static  bool    _comp(const T &a, const T &b) {
             ++_compCount;
-            return a < b;
+            return *a < *b;
         }
 
-        template <typename T> static  void    _swap_pair(T &it, int pair_lvl) const {
-            T   start = it;
-            T   end = std::next(start, pair_lvl);
-            std::iter_swap(start, end);
+        template <typename T> static  T    _next(T it, int steps) {
+            std::advance(it, steps);
+
+            return it;
+        }
+
+        template <typename T> static  void    _swap_pair(T &it, int pair_lvl) {
+            T   start = _next(it, -(pair_lvl - 1));
+            T   end = _next(start, pair_lvl);
+
+            for (;start != end; ++start) {
+                std::iter_swap(start, _next(start, pair_lvl));
+            }
         }
 
     public:
+
+        static int _compCount;
+
         PmergeMe();
 
         ~PmergeMe();

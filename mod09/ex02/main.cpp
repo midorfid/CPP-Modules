@@ -8,5 +8,10 @@ int main(int argc, char *argv[]) {
         std::cout << "minimum 2 numbers required to sort";
     }
 	
-    PmergeMe    vecSort(argc - 1, ++argv);
+    PmergeMe    vecSort;
+
+
+    
+    std::vector<int> v = vecSort.parseInput(argc - 1, ++argv);
+    vecSort.sortVec(v, 1);
 }

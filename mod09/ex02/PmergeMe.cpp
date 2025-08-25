@@ -6,6 +6,8 @@
 #include <utility>
 #include <algorithm>
 
+int PmergeMe::_compCount = 0;
+
 PmergeMe::PmergeMe() {
 	std::cout << "constructor";
 }
@@ -20,7 +22,7 @@ PmergeMe::PmergeMe(const PmergeMe &other) {
 }
 
 PmergeMe &PmergeMe::operator=(const PmergeMe &other) {
-
+	(void)other;
 	return *this;
 }
 
@@ -52,28 +54,44 @@ void	PmergeMe::printVec(const std::vector<int> &v, bool isSorted) {
 			std::cout << "Before:	";
 			break;
 	}
-	for (std::vector<int>::const_iterator it = unsortedVec.begin(); it != unsortedVec.end(); ++it) {
-		std::cout << unsortedVec.back() << " ";
+	for (std::vector<int>::const_iterator it = v.begin(); it != v.end(); ++it) {
+		std::cout << *it << " ";
 	}
 	std::cout << std::endl;
 }
 
 void	PmergeMe::sortVec(std::vector<int> &container, int pair_lvl) {
-	std::vector<int>::iterator &begin = container.begin();
-	std::vector<int>::iterator &end = container.end();
-	bool	is_odd = false;
-
-	if (container.size() % 2 == 1)
-		is_odd = true;
+	typedef std::vector<int>::iterator Iterator;
 	
+	int pair_units = container.size() / pair_lvl;
 
-	for (std::vector<int>::iterator &it = begin; it != end; std::advance(it, pair_lvl)) {
-		std::vector<int>::iterator &next = std::next(it, pair_lvl);
+	bool is_odd = pair_units % 2 == 1;
 	
-		if (!_comp(it, next))
-			
+	Iterator begin = container.begin();
+	Iterator last = _next(container.begin(), pair_lvl * pair_units);
+	Iterator end = _next(last, -(is_odd * pair_lvl));
+
+	int jump = 2 * pair_lvl;
+	for (Iterator it = begin; it != end; std::advance(it, jump)) {
+		
+		Iterator this_pair = _next(it, pair_lvl - 1);
+		Iterator next_pair = _next(it, pair_lvl * 2 - 1);
+	
+		// std::cout << "this pair:" << *this_pair << '\n';
+		// std::cout << "next pair:" << *next_pair << '\n';
+
+		if (!_comp(this_pair, next_pair)) {
+			_swap_pair(this_pair, pair_lvl);		
+		}
 	}
-	
 	sortVec(container, pair_lvl * 2);
+
+	std::vector<Iterator> main;
+	std::vector<Iterator> pend;
+
+	main.insert(begin, pair_lvl - 1);
+	main.insert(begin, pair_lvl * 2 - 1);
+
+	
 }
 
